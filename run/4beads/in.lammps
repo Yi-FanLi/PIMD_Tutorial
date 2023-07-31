@@ -23,7 +23,7 @@ dump            1 all custom 200 ${ibead}.xyz id type x y z
 dump_modify     1 append yes sort id
 
 timestep        0.0005
-thermo_style    custom step f_1[1*4] vol
+thermo_style    custom step temp f_1[1*4] vol
 thermo          100
 thermo_modify format line "%d %.8e %.8e %.8e %.8e %.8e %.8e %.8e %.8e %.8e %.8e %.8e %.8e %.8e %.8e %.8e %.8e"
 
