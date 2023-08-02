@@ -13,7 +13,7 @@ read_data ../iceInit/conf222
 mass 		1 15.9994
 mass		2 1.00794
 
-pair_style deepmd ../../model/graph1.pb 
+pair_style deepmd ../../../model/graph1.pb 
 pair_coeff      * *	
 
 
