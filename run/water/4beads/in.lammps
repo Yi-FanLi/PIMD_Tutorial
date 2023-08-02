@@ -17,7 +17,7 @@ pair_style deepmd ../../../model/graph1.pb
 pair_coeff      * *	
 
 
-fix 1 all pimd/langevin fmmode physical ensemble npt integrator obabo thermostat PILE_L 975481 temp 300.0 tau 1.0 scale 1.0 barostat BZP aniso 1.0 taup 1.0
+fix 1 all pimd/langevin fmmode physical ensemble npt integrator obabo thermostat PILE_L 975481 temp 300.0 tau 1.0 scale 1.0 barostat BZP iso 1.0 taup 1.0
 
 dump            1 all custom 200 ${ibead}.xyz id type x y z
 dump_modify     1 append yes sort id
