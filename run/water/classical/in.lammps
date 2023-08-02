@@ -1,0 +1,30 @@
+variable        ibead           uloop 99 pad
+# bulk water
+units           metal
+boundary        p p p
+atom_style      atomic
+atom_modify     map yes
+
+#neighbor        2.0 bin
+neigh_modify    every 10 delay 0 check no
+
+read_data ../initial_config/data.300K_liq128H2O_200ps
+
+mass 		1 15.9994
+mass		2 1.00794
+
+pair_style deepmd ../../../model/graph1.pb 
+pair_coeff      * *	
+
+
+fix 1 all npt temp 300 300 0.1 aniso 1 1 0.01
+
+dump            1 all custom 200 ${ibead}.xyz id type x y z
+dump_modify     1 append yes sort id
+
+timestep        0.0005
+thermo_style custom step temp pe vol density
+thermo          100
+thermo_modify format line "%d %.8e %.8e %.8e %.8e %.8e %.8e %.8e %.8e %.8e %.8e %.8e %.8e %.8e %.8e %.8e %.8e"
+
+run 2000
